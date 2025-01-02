@@ -1,7 +1,10 @@
-
+ROKE = "|"*50
+line = "\n"
 
 try:
         import time
+        import getpass
+        from getpass import getpass
         import socket
         from colorama import Fore, Style
         import pyfiglet
@@ -29,18 +32,18 @@ def Start_Tool () -> None :
     print("\33[39;0m")
 
     print (Fore.LIGHTRED_EX,""" 
-    |||||||||||||||||||||||||||||||||||||||||                                       
-    #                                       #
-    #   BY | Mohammed Alaa                  #
-    #                                       #
-    #   Tool Name | Encryption Tool         #
-    #                                       #
-    #   Date | 2025 - 1 - 1                 #
-    #                                       #
-    #   Language | {}                       #
-    #                                       #
-    |||||||||||||||||||||||||||||||||||||||||
-    \33[39;0m""".format(set_user_language))    
+    |||||||||||||||||||||||||||||||||||||||||||||                                       
+    #                                           #
+    #   BY | Mohammed Alaa                      #      
+    #                                           #
+    #   Tool Name | Encryption Tool             #
+    #                                           #
+    #   Date | 2025 - 1 - 1                     #
+    #                                           #
+    #   Language | {}                           #
+    #                                           #
+    |||||||||||||||||||||||||||||||||||||||||||||
+    \33[39;0m""".format(set_user_language.title()))    
 
 
 
@@ -62,6 +65,7 @@ def START () -> None :
     elif platform.system() == 'Linux':
 
         print("The system is Linux.")
+        Start_Tool()
 
 
     else:
@@ -72,24 +76,74 @@ def START () -> None :
 #==========================================================================================
 #==========================================================================================
 
-def AR_LANG (lang= False) -> None:
+
+
+def __Options__ () -> None :
+
+    Write.Print (""+"System Check [■■■■■■■■■■] 100% \nModels Check [■■■■■■■■■■] 100% \nLast Update Check [■■■■□□□□□□] 40% \nAll Steps [■■■□□□□] 50%\n\b"*1,Colors.green,interval=.030)
+
+    while True :
+
+        user_options = ("""\33[36;1m
+        1 - Set File To Encryption as [.txt]
+        2 - Set File To Dec as [.txt]
+        3 - Set File To Set Passcode as ["*"]
+        4 - Set File To Checking All Details as [.py]
+        5 - If You Want Tool Edit 
+        0 - Exit
+        \33[39;0m""")
+
+        print(user_options)
+
+        user_set = input ('\f\n\33[96;1m[\33[39;0m\33[91;1m-\33[39;0m\33[36;1m]\33[39;0m\33[3;1m Choose Number of The List -> \33[39;0m')
+
+
+        if user_set == '1' :
+
+            host = socket.gethostname()
+            ip = socket.gethostbyname(host)
+
+            print(Fore.LIGHTRED_EX,"\nPC Name --> {} \n\nIP Add --> {}\n".format(host,ip))    
+            print("\33[39;0m")
+            print("{}".format(ROKE))
+
+        elif user_set == '2' :
+
+            pass
+
+
+        elif user_set == '5':
+        
+            LUI_SAVE = []
+            username = input ("\n[→] Set a Username of Your Account GitHub | ")
+            code = getpass ("\n[→] Set a Password Account GitHub | ")
+        
+            LUI_SAVE.append(username)
+            LUI_SAVE.append(code)
+
+            # print("\33[92;1m\nYour Username is a --> [{}] ⇄ Passcode is a --> [{}] \33[39;0m".format(username,code))
             
-            if set_user_language == "en":
+            print(Fore.LIGHTBLUE_EX,"\nAll Data is at Save...")
 
-                return lang 
+            # print(LUI_SAVE)
 
-            pass
+        elif user_set == '':
 
-
-
-def EN_LANG (lang = False) -> None:
-
-            return lang
-
-            pass
+            print("\n\33[33;1m [❌] Choose a Number of Liste...\33[39;0")
 
 
-set_user_language = input("\33[96;1m[\33[39;0m\33[91;1m-\33[39;0m\33[36;1m]\33[39;0m Set A You Need Use Language...[EN / AR] : \33[39;0m")
+        elif user_set == '0':
+            break
+        else:
+            print("\n\t\33[91;1m Number Not Found of a List")
+#==========================================================================================         #==========================================================================================   
+#==========================================================================================
+
+
+                                                # ================= This is a Main Tool ======================
+
+
+set_user_language = input("\33[96;1m[\33[39;0m\33[91;1m-\33[39;0m\33[36;1m]\33[39;0m Set A You Need Use Language...[EN / AR] : \33[39;0m").lower()
 if set_user_language == '': 
 
         choose = Write.Print("\n [→] Please Set a Format Language To Start or Set -h To Help... or set -ex To Exit\n\n\n",Colors.yellow,interval=.05)
@@ -104,9 +158,10 @@ elif set_user_language != 'ar' and set_user_language != 'en':
             exit()
         
 elif set_user_language == 'ar' or set_user_language == 'en':
-
             START()
+            __Options__()
 
 elif set_user_language == '-ex':
 
             quit()
+
